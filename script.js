@@ -15,6 +15,10 @@ function addTask(e){
 
     const taskDiv = document.createElement("div")
     const taskDescription = document.createElement("p")
+    taskDescription.textContent = inputValue
 
-    taskDescription.appendChild(taskDescription)
+    taskDiv.appendChild(taskDescription)
+    taskListContainer.appendChild(taskDiv)
+
+    
 }
