@@ -1,24 +1,60 @@
 const createTaskForm = document.getElementById("createTaskForm")
 const taskInput = document.getElementById("taskInput")
+const taskListContainer = document.getElementById("taskList")
+
+//import export
 
 let taskList = []
 
+const totalTasksEl = document.createElement("p")
+totalTasksEl.textContent = "0"
+taskListContainer.appendChild(totalTasksEl)
+
 createTaskForm.addEventListener("submit", (e) => addTask(e))
 
-function addTask(e){
+function addTask(e) {
+  e.preventDefault()
+  const inputValue = taskInput.value
+  const taskId = generateRandomId()
+  const newTask = {
+    id: taskId,
+    description: inputValue,
+    isComplete: false
+  }
 
-    e.preventDefault()
-    const inputValue = taskInput.value
+  taskList.push(newTask)
+  taskInput.value = ""
 
-    taskList.push(inputValue)
-    taskInput.value = ""
+  totalTasksEl.textContent = taskList.length
 
-    const taskDiv = document.createElement("div")
-    const taskDescription = document.createElement("p")
-    taskDescription.textContent = inputValue
+  const taskDiv = document.createElement("div")
+  taskDiv.dataset.taskId = taskId
+  taskDiv.classList.add("task")
 
-    taskDiv.appendChild(taskDescription)
-    taskListContainer.appendChild(taskDiv)
+  const taskDescription = document.createElement("p")
+  taskDescription.textContent = inputValue
 
-    taskDescription.appendChild(taskDescription)
+  const removeBtn = document.createElement("button")
+  removeBtn.textContent = "Remover Task"
+
+  taskDiv.appendChild(taskDescription)
+  taskDiv.appendChild(removeBtn)
+
+  taskListContainer.appendChild(taskDiv)
+
+  removeBtn.addEventListener("click", (e) => {
+    const taskDivToDelete = e.target.parentNode
+    const taskIdToDelete = taskDivToDelete.dataset.taskId
+    console.log(taskIdToDelete)
+
+    taskList = taskList.filter((task) => task.id != taskIdToDelete)
+    taskListContainer.removeChild(taskDivToDelete)
+    console.log(taskList)
+  })
+}
+
+//0,1 até 0,99
+function generateRandomId() {
+  const id = Math.floor(Math.random() * 100000000)
+  return id
 }

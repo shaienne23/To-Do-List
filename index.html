@@ -5,21 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+
+
 </head>
 
 <body>
-    <h1>Javascript ToDo</h1>
-    <form id="createTaskForm">
-        <input type="text" placeholder="Adicione uma nova tarefa" id="" taskInput>
-        <button type="submit">Criar +</button>
-    </form>
+    <main>
+        <h1>To Do List</h1>
 
-    <div id="taskList">
+        <form id="createTaskForm" class="add-task-form-container">
+            <input type="text" placeholder="Adicione uma nova tarefa" id="taskInput">
+            <button type="submit">Criar +</button>
+        </form>
 
-    </div>
+        <div id="taskList" class="task-container">
 
-    <script src="./script.js"></script>
-    <script src="./task.js"></script>
+        </div>
+
+        <script src="./script.js"></script>
+    </main>
 </body>
 
 </html>
