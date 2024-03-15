@@ -20,5 +20,5 @@ function addTask(e){
     taskDiv.appendChild(taskDescription)
     taskListContainer.appendChild(taskDiv)
 
-    
+    taskDescription.appendChild(taskDescription)
 }
