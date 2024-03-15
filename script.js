@@ -34,8 +34,7 @@ function addTask(e) {
   const taskDescription = document.createElement("p")
   taskDescription.textContent = inputValue
 
-//   const removeBtn = document.createElement("button")
-//   removeBtn.textContent = "Remover Task"
+
 const removeBtn = document.createElement("img");
 removeBtn.src = "./img/lixeirinha.png"; 
 removeBtn.alt = "Remover Task";
